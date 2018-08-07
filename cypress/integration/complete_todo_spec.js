@@ -4,16 +4,17 @@ describe('Completes a ToDo', () => {
   })
 
   it('submits ToDo', function() {
-    cy.get('.new-todo')
+    cy.get('[data-reactid=".0.0.1"]')
       .type('I have to complete this todo{enter}')
   })
-
-  it('finds toggle', function() {
-    cy.get('.toggle').click()
-
+  it('submits second ToDo', function() {
+    cy.get('[data-reactid=".0.0.1"]')
+      .type('One more ToDo{enter}')
   })
 
+  it('finds and clicks toggle', function() {
+    cy.get('li:contains(complete this todo)').click('left').should('have.class', 'completed')
 
-
+  })
 
 })
